@@ -1,8 +1,20 @@
 language: java
 jdk:
-  - oraclejdk8
+  - openjdk8
 before_install:
   - chmod +x gradlew
   - chmod +x gradle/wrapper/gradle-wrapper.jar
 script:
   - ./gradlew test build
+
+sudo: false
+
+notifications:
+  email:
+    recipients:
+      -Andrey4281@yandex.ru
+    on_success: never # default: change
+    on_failure: always # default: always
+env:
+  global:
+    - CODECOV_TOKEN="40045853-f324-4bd6-b195-538e02b61e94"

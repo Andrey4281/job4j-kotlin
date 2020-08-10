@@ -1,11 +1,12 @@
 package ru.job4j.tracker
 
 import io.kotlintest.shouldBe
+import io.kotlintest.shouldThrow
 import io.kotlintest.specs.StringSpec
 
 
 internal class TrackerTest: StringSpec({
-    val tracker: Tracker = Tracker()
+    val tracker = Tracker()
 
     "When add new item then should get it" {
         val item = Item(1, "Task1")
@@ -16,10 +17,12 @@ internal class TrackerTest: StringSpec({
     }
 
     "When delete item then should not get it" {
-        val item = Item(2, "Task2")
-        tracker.add(item)
-        tracker.delete(2)
-        tracker.findById(2) shouldBe null
+        shouldThrow<KotlinNullPointerException> {
+            val item = Item(2, "Task2")
+            tracker.add(item)
+            tracker.delete(2)
+            tracker.findById(2) shouldBe null
+        }
     }
 
     "When replace item then should get a new value" {

@@ -17,7 +17,7 @@ internal class TrackerTest: StringSpec({
     }
 
     "When delete item then should not get it" {
-        shouldThrow<KotlinNullPointerException> {
+        shouldThrow<NoSuchElementException> {
             val item = Item(2, "Task2")
             tracker.add(item)
             tracker.delete(2)

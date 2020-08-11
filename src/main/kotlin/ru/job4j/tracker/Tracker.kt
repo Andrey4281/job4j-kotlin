@@ -19,5 +19,5 @@ class Tracker: ITracker {
 
     override fun findByName(key: String): Array<Item> = storage.filter { it.name == key }.toTypedArray()
 
-    override fun findById(id: Long): Item = storage.find { it.id == id }!!
+    override fun findById(id: Long): Item = storage.single { it.id == id }
 }

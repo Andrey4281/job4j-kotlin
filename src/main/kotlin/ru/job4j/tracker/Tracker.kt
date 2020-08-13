@@ -2,9 +2,12 @@ package ru.job4j.tracker
 
 class Tracker: ITracker {
     private val storage = ArrayList<Item>()
+    private var ids: Long = 0;
 
     override fun add(item: Item): Item {
+        item.id = this.ids;
         storage.add(item)
+        ids++
         return item
     }
 

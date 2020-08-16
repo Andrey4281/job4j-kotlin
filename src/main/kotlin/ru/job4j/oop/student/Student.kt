@@ -1,4 +1,4 @@
-package ru.job4j.student
+package ru.job4j.oop.student
 
 class Student(var name: String = "",
               var surname: String = "",

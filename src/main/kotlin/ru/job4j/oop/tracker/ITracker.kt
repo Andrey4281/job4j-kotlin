@@ -1,4 +1,6 @@
-package ru.job4j.tracker
+package ru.job4j.oop.tracker
+
+import ru.job4j.oop.tracker.Item
 
 interface ITracker {
     fun add(item: Item): Item

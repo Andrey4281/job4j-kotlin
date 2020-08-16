@@ -1,8 +1,8 @@
-package ru.job4j.tracker
+package ru.job4j.oop.tracker
 
 class Tracker: ITracker {
     private val storage = ArrayList<Item>()
-    private var ids: Long = 0;
+    private var ids: Long = 1;
 
     override fun add(item: Item): Item {
         item.id = this.ids;

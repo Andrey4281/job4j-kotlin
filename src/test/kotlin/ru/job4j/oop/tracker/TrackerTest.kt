@@ -1,4 +1,4 @@
-package ru.job4j.tracker
+package ru.job4j.oop.tracker
 
 import io.kotlintest.shouldBe
 import io.kotlintest.shouldThrow

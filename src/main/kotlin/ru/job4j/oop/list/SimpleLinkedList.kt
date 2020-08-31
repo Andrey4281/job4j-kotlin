@@ -14,6 +14,7 @@ class SimpleLinkedList<T>: Iterable<T>, ListIterator<T> {
         } else {
             val current = Node<T>(value)
             current.next = head
+            head!!.prev = current
             head = current
         }
         pointer = head
@@ -44,18 +45,16 @@ class SimpleLinkedList<T>: Iterable<T>, ListIterator<T> {
                 throw NoSuchElementException()
             }
             val value = pointer!!.value
-            pointer = pointer?.next
+            pointer = pointer!!.next
             return value
         }
     }
 
-    class Node<K>(val value: K, var next: Node<K>? = null)
+    class Node<K>(val value: K, var next: Node<K>? = null, var prev: Node<K>? = null)
 
     override fun hasNext(): Boolean = pointer != null
 
-    override fun hasPrevious(): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun hasPrevious(): Boolean = pointer?.prev != null
 
     override fun next(): T {
         if (!hasNext()) {
@@ -75,11 +74,19 @@ class SimpleLinkedList<T>: Iterable<T>, ListIterator<T> {
     }
 
     override fun previous(): T {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        if (!hasPrevious()) {
+            throw NoSuchElementException()
+        }
+        pointer = pointer!!.prev
+        currentIndex--
+        return pointer!!.value
     }
 
     override fun previousIndex(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        if (!hasPrevious()) {
+            throw NoSuchElementException()
+        }
+        return currentIndex - 1
     }
 }
 
@@ -90,5 +97,13 @@ fun main() {
     list.add("c")
     for (value in list) {
         println(value)
+    }
+
+    list.next()
+    list.next()
+
+    while (list.hasPrevious()) {
+        println(list.previousIndex())
+        println(list.previous())
     }
 }

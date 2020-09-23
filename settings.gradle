@@ -1,2 +1,9 @@
-rootProject.name = 'job4j-kotlin'
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        jcenter()
+    }
+}
 
+
+rootProject.name = 'job4j-kotlin'
